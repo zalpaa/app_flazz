@@ -1,5 +1,11 @@
 <?php
 include "koneksi.php";
+session_start();
+
+if(!isset($_SESSION['username'])) {
+    header("location:login.php?pesan=logindulu");
+    exit;
+}
 
 $sql = "SELECT * FROM produk";
 $query = mysqli_query($koneksi, $sql);
@@ -14,6 +20,17 @@ $query = mysqli_query($koneksi, $sql);
     <title>Document</title>
 </head>
 <body>
+    <?php
+        if (isset($_SESSION['username'])) {
+            echo "Selamat datang, " . $_SESSION['username'] . "!";
+        } else {
+            echo "Anda belum login.";
+        }
+    ?>
+
+    <div>
+        <a href="./logout.php"><button>Logout</button></a>
+    </div>
     <h1>produk</h1>
 
     <a href = "tambah.php">Tambah</a><br><br>
@@ -41,5 +58,7 @@ $query = mysqli_query($koneksi, $sql);
 </tr>
     <?php } ?>
 </table>
+
+
 </body>
 </html>

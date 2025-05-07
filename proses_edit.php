@@ -1,5 +1,11 @@
 <?php
 include "koneksi.php";
+session_start();
+
+if(!isset($_SESSION['username'])) {
+    header("location:login.php?pesan=logindulu");
+    exit;
+}
 
 $id_produk = $_GET['id_produk'];
 $nama_produk = $_GET['nama_produk'];

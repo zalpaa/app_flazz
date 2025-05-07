@@ -1,5 +1,11 @@
 <?php
 include "koneksi.php";
+session_start();
+
+if(!isset($_SESSION['username'])) {
+    header("location:login.php?pesan=logindulu");
+    exit;
+}
 
 $nama_produk = $_GET['nama_produk'];
 $deskripsi = $_GET['deskripsi'];
@@ -18,3 +24,6 @@ header("location:index.php?simpan=gagal");
 exit;
 }
 ?>
+<h1>bot
+
+</h1>
