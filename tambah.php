@@ -1,11 +1,5 @@
 <?php
 include ("koneksi.php");
-session_start();
-
-if(!isset($_SESSION['username'])) {
-    header("location:login.php?pesan=logindulu");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,14 +11,20 @@ if(!isset($_SESSION['username'])) {
 <body>
 <h1>Tambah</h1>
 <form action="proses_tambah.php" method="get">
-<label for="">Nama Produk</label>
-<input type="text" name="nama_produk" id=""><br>
+<label for="">Id Kategori</label>
+<input type="number" name="id_kategori" id=""><br>
+<label for="">Nama</label>
+<input type="text" name="nama" id=""><br>
+<label for="">Foto</label>
+<input type="file" name="foto" id=""><br>
 <label for="">Deskripsi</label>
 <input type="text" name="deskripsi" id=""><br>
 <label for="">Harga</label>
-<input type="number" name="harga" id=""><br>
-<label for="">Stok</label>
-<input type="number" name="stok" id=""><br>
+<input type="number" name="number" id=""><br>
+<label for="">Ukuran</label>
+<input type="text" name="ukuran" id=""><br>
+<label for="">Ketersediaan</label>
+<input type="number" name="ketersediaan" id=""><br>
 <input type="submit" value="Simpan">
 </form>
 </body>

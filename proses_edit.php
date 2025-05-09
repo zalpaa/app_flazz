@@ -1,31 +1,28 @@
 <?php
 include "koneksi.php";
-session_start();
-
-if(!isset($_SESSION['username'])) {
-    header("location:login.php?pesan=logindulu");
-    exit;
-}
 
 $id_produk = $_GET['id_produk'];
-$nama_produk = $_GET['nama_produk'];
+$id_kategori = $_GET['id_kategori'];
+$nama = $_GET['nama'];
+$foto = $_GET['foto'];
 $deskripsi = $_GET['deskripsi'];
 $harga = $_GET['harga'];
-$stok = $_GET['stok'];
+$ukuran = $_GET['ukuran'];
+$ketersediaan = $_GET['ketersediaan'];
 
 $sql = "UPDATE produk SET
-nama_produk = '$nama_produk',
+id_produk = '$id_produk',
+foto = '$foto',
 deskripsi = '$deskripsi',
-harga = '$harga',
-stok = '$stok'
+harga = '$harga'
 WHERE id_produk = '$id_produk' ";
 
 $query = mysqli_query($koneksi,$sql);
 if ($query) {
-header("location:index.php?edit=sukses");
+header("location:dashboard.php?edit=sukses");
 exit;
 } else {
-header("location:index.php?edit=gagal");
+header("location:dashboard.php?edit=gagal");
 exit;
 }
 ?>

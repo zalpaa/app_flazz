@@ -1,11 +1,5 @@
 <?php
 include "koneksi.php";
-session_start();
-
-if(!isset($_SESSION['username'])) {
-    header("location:login.php?pesan=logindulu");
-    exit;
-}
 
 $id_produk = $_GET['id_produk'];
 $sql = "SELECT * FROM produk WHERE id_produk = '$id_produk' ";
@@ -23,15 +17,20 @@ while ($produk = mysqli_fetch_assoc($query)) { ?>
     <h1>Edit</h1>
     <form action="proses_edit.php" method="get">
     <input type="hidden" name="id_produk" value="<?= $produk['id_produk'] ?>">
-    <label for="">Nama Produk</label>
-    <input type="text" name="nama_produk" id="" value="<?= $produk['nama_produk'] ?>"><br>
+    <label for="">Id Kategori</label>
+    <input type="text" name="id_kategori" id="" value="<?= $produk['id_kategori'] ?>"><br>
+    <label for="">Nama</label>
+    <input type="text" name="nama" id="" value="<?=$produk['nama'] ?>"><br>
+    <label for="">Foto</label>
+    <input type="file" name="foto" id="" value="<?= $produk['harga'] ?>"><br>
     <label for="">Deskripsi</label>
-    <input type="text" name="deskripsi" id="" value="<?=$produk['deskripsi'] ?>"><br>
+    <input type="text" name="deskripsi" id="" value="<?= $produk['deskripsi'] ?>"><br>
     <label for="">Harga</label>
     <input type="number" name="harga" id="" value="<?= $produk['harga'] ?>"><br>
-    <label for="">Stok</label>
-
-    <input type="number" name="stok" id="" value="<?= $produk['stok'] ?>"><br>
+    <label for="">Ukuran</label>
+    <input type="text" name="ukuran" id="" value="<?= $produk['ukuran'] ?>"><br>
+    <label for="">Ketersediaan</label>
+    <input type="number" name="ketersediaan" id="" value="<?= $produk['ukuran'] ?>"><br>
 
     <input type="submit" value="Update">
 

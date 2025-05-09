@@ -1,29 +1,23 @@
 <?php
 include "koneksi.php";
-session_start();
 
-if(!isset($_SESSION['username'])) {
-    header("location:login.php?pesan=logindulu");
-    exit;
-}
-
-$nama_produk = $_GET['nama_produk'];
+$id_kategori = $_GET['id_kategori'];
+$nama = $_GET['nama'];
+$foto = $_GET['foto'];
 $deskripsi = $_GET['deskripsi'];
 $harga = $_GET['harga'];
-$stok = $_GET['stok'];
+$ukuran = $_GET['ukuran'];
+$ketersediaan = $_GET['ketersediaan'];
 
-$sql = "INSERT INTO produk (nama_produk,deskripsi,harga,stok) VALUES
-('$nama_produk','$deskripsi','$harga','$stok')";
+$sql = "INSERT INTO produk (id_kategori,nama,foto,deskripsi,harga,ukuran,ketersediaan) VALUES
+('$id_kategori','$nama','$foto','$deskripsi','$harga','$ukuran','$ketersediaan')";
 $query = mysqli_query($koneksi, $sql);
 
 if ($query) {
-header("location:index.php?simpan=sukses");
+header("location:dashboard.php?simpan=sukses");
 exit;
 } else {
-header("location:index.php?simpan=gagal");
+header("location:dashboard.php?simpan=gagal");
 exit;
 }
 ?>
-<h1>bot
-
-</h1>
